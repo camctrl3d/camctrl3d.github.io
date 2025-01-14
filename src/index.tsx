@@ -80,6 +80,8 @@ function TitleSection() {
     </div>
     <HSpace rem={1.0} />
     <div>Google DeepMind</div>
+    <HSpace rem={1.0} />
+    <div>3DV 2025</div>
     <HSpace rem={2.0} />
     <div className={styles.link_container}>
       <Link href="https://arxiv.org/pdf/2501.06006" icon={"static/pdf_icon.svg"}>Paper</Link>
