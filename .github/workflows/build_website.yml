@@ -49,6 +49,9 @@ jobs:
       - name: Move static content to dist
         run: mv static dist/
 
+      - name: Move Google verification file to dist
+        run: mv googleed6ae8acc23b4c48.html dist/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
