@@ -4,7 +4,7 @@ import { Carousel, Crop } from "./video_display";
 import styles from "./index.module.scss";
 
 function Ours() { return <><span className={styles.ours}>CamCtrl</span>3D</>; }
-function HSpace(props: { rem: number }) { return <div style={{ height: `${props.rem}rem` }} />; }
+function VSpace(props: { rem: number }) { return <div className={styles.vspace} style={{ height: `${props.rem}em` }} />; }
 function Section(props: React.PropsWithChildren<{ title?: string, wide?: boolean }>) {
   return <div className={props.wide ? styles.section_wide : styles.section_narrow}>
     {props.title && <div className={styles.section_title}>{props.title}</div>}
@@ -55,8 +55,10 @@ export function LabeledVideo(
   return (
     <div className={styles.labeled_video}
       style={{ gridTemplateColumns: `repeat(${props.labels.length}, 1fr)` }}>
-      <img src={`${props.url}.thumb.jpg`} />
-      {props.visible && <video autoPlay muted loop playsInline src={props.url} preload="auto" ref={videoRefFn} />}
+      <div className={styles.video_container}>
+        <img src={`${props.url}.thumb.jpg`} className={styles.labeled_video_img} />
+        {props.visible && <video autoPlay muted loop playsInline src={props.url} preload="auto" ref={videoRefFn} />}
+      </div>
       {props.labels.map((v, i) => <div data-label="t" key={v} style={{ gridColumn: i + 1 }}>{v}</div>)}
       <div data-load-ind="t" style={{ display: showLoading ? "inline" : "none" }}>Loading video ...</div>
     </div>
@@ -69,7 +71,7 @@ function TitleSection() {
     <div className={styles.paper_title}>
       <Ours />: Single-Image Scene Exploration with Precise 3D Camera Control
     </div>
-    <HSpace rem={2} />
+    <VSpace rem={2} />
     <div className={styles.paper_author}>
       <a href="https://www.popov.im">Stefan Popov</a>
       <a href="http://amitraj93.github.io">Amit Raj</a>
@@ -78,11 +80,11 @@ function TitleSection() {
       <a href="http://billf.mit.edu/">William T. Freeman</a>
       <a href="https://people.csail.mit.edu/mrub">Michael Rubinstein</a>
     </div>
-    <HSpace rem={1.0} />
+    <VSpace rem={1.0} />
     <div>Google DeepMind</div>
-    <HSpace rem={1.0} />
+    <VSpace rem={1.0} />
     <div>3DV 2025</div>
-    <HSpace rem={2.0} />
+    <VSpace rem={2.0} />
     <div className={styles.link_container}>
       <Link href="https://arxiv.org/pdf/2501.06006" icon={"static/pdf_icon.svg"}>Paper</Link>
       <Link href="https://arxiv.org/abs/2501.06006" icon={"static/arxiv_icon.svg"}>arXiv</Link>
@@ -137,7 +139,7 @@ function TeaserSection() {
   const labels = ["Input image", "Input camera trajectory", "Generated video"];
   return <Section wide>
     <VideoCarousel videos={videos} labels={labels} />
-    <HSpace rem={0.4} />
+    <VSpace rem={0.4} />
     <div className={styles.video_caption}> <Center>
       <Ours /> generates fly-through videos of a scene, from an input image
       and a user given camera trajectory.
@@ -178,9 +180,9 @@ function OverviewSection() {
       we condition the UNet denoiser of Stable Video Diffusion (SVD) on the
       camera trajectory, as shown in the figure below.
     </Justify>
-    <HSpace rem={2} />
+    <VSpace rem={2} />
     <img src="static/architecture.jpg" style={{ width: "100%" }} />
-    <HSpace rem={2} />
+    <VSpace rem={2} />
     <Justify>
       We inject raw camera extrinsics into UNet's temporal layers. We use
       camera-dependent <a href="https://arxiv.org/abs/2203.13296">2D⇔3D
@@ -228,13 +230,13 @@ function InTheWildSection() {
     <div className={styles.video_caption}><Center>
       These videos are generated from images that are out of distribution
       of our training data and are captured in the wild.</Center></div>
-    <HSpace rem={1.5} />
+    <VSpace rem={1.5} />
     <VideoCarousel
       videos={videos.map((v) => v.v)}
       labels={["Input image", "Input camera trajectory", "Generated video"]}
       onVideoChanged={setVidIdx}
     />
-    <HSpace rem={0.4} />
+    <VSpace rem={0.4} />
     <div className={styles.video_caption}><Center>{videos[vidIdx].d}</Center></div>
   </Section>;
 }
@@ -250,7 +252,7 @@ function CompareToGtSection() {
         <Ours /> from the same first frame and with the same camera trajectory.
       </Center>
     </div>
-    <HSpace rem={1.5} />
+    <VSpace rem={1.5} />
     <VideoCarousel
       videos={videos} twoColVideo
       labels={["Generated video", "Ground truth video, same trajectory"]}
@@ -278,19 +280,19 @@ function BibTeXSection() {
 function App() {
   return (
     <div className="body-container">
-      <HSpace rem={2.0} />
+      <VSpace rem={2.0} />
       <TitleSection />
-      <HSpace rem={6.0} />
+      <VSpace rem={3.0} />
       <TeaserSection />
       {/* <HSpace rem={4.0} />
       <AbstractSection /> */}
-      <HSpace rem={6.0} />
+      <VSpace rem={3.0} />
       <OverviewSection />
-      <HSpace rem={6.0} />
+      <VSpace rem={6.0} />
       <InTheWildSection />
-      <HSpace rem={6.0} />
+      <VSpace rem={6.0} />
       <CompareToGtSection />
-      <HSpace rem={6.0} />
+      <VSpace rem={6.0} />
       <BibTeXSection />
     </div>
   );
