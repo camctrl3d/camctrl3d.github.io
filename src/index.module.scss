@@ -114,6 +114,20 @@ body {
   background-color: #f5f5f5;
 }
 
+@keyframes fade_out_landscape_warning {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.view_landscape {
+  display: none;
+  @media screen and (max-width: 768px) and (orientation: portrait) {
+    display: block;
+    font-size: 0.7rem;
+    font-style: italic;
+    // animation: fade_out_landscape_warning 2s ease-out 1s forwards;
+  }
+}
 .video_caption {
   font-size: 1.25rem;
   @media (max-width: 767px) { font-size: 0.9rem; }
