@@ -66,27 +66,26 @@ body {
   display: flex;
   justify-content: center;
   gap: 1em;
-  @media (max-width: 767px) { gap: 0.7rem; }
   flex-wrap: wrap;
+  @media (max-width: 767px) { gap: 0.7rem; }
 }
 
 .paper_author>a {
   line-height: 1rem;
   text-align: center !important;
   font-size: 1.25rem !important;
-  @media (max-width: 767px) { font-size: 1.1rem !important; }
-
   cursor: pointer;
   text-decoration: none;
   color: hsl(204, 86%, 53%) !important;
+  @media (max-width: 767px) { font-size: 1.1rem !important; }
 }
 
 .link_container {
   display: flex;
   justify-content: center;
   gap: 1em;
-  @media (max-width: 767px) { gap: 0.7em; }
   flex-wrap: wrap;
+  @media (max-width: 767px) { gap: 0.7em; }
 }
 
 .link_item {
