@@ -138,7 +138,7 @@ function TeaserSection() {
 
   const labels = ["Input image", "Input camera trajectory", "Generated video"];
   return <Section wide>
-    <div className={styles.view_landscape}>* Videos look best in landscape.</div>
+    <div className={styles.view_landscape}>* Videos look best in landscape mode.</div>
     <VideoCarousel videos={videos} labels={labels} />
     <VSpace rem={0.4} />
     <div className={styles.video_caption}> <Center>

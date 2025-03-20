@@ -84,6 +84,7 @@
 
 .video_slider_thumb_overlay[data-selected="true"] {
   box-shadow: inset 0px 0px 0px 3px #ff0;
+  @media (max-width: 767px) { box-shadow: inset 0px 0px 0px 3px #f00; }
 }
 
 .video_slider_thumb_overlay[data-selected="false"]:hover {
